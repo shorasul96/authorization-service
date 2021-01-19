@@ -1,0 +1,26 @@
+INSERT INTO oauth_client_details (client_id, client_secret, web_server_redirect_uri, scope, access_token_validity, refresh_token_validity, resource_ids, authorized_grant_types, additional_information)VALUES ('akfa', '$2y$10$/4kDkNstzITAacElhvI3We.aIUFMLs2dcofGHREdFd8ax48sgoKkK', 'http://localhost:8080', 'READ,WRITE', '3600', '10000', 'inventory,payment', 'authorization_code,password,refresh_token,implicit', '{}');
+/* akfa - akfaGroup1234*/
+
+ INSERT INTO PERMISSIONS (ID,NAME) VALUES
+ (1,'create_profile'),
+ (2,'read_profile'),
+ (3,'update_profile'),
+ (4,'delete_profile');
+
+ INSERT INTO roles (ID,NAME) VALUES
+		(1,'ROLE_ADMIN'),(2,'ROLE_MANAGER'),(3,'ROLE_USER');
+
+ INSERT INTO PERMISSION_ROLE (PERMISSION_ID, ROLE_ID) VALUES
+     (1,1), /*create-> admin */
+     (2,1), /* read admin */
+     (3,1), /* update admin */
+     (4,1), /* delete admin */
+     (2,2),  /* read manager */
+     (3,2);  /* update manager */
+insert into "users" (id, username,password, email, enabled, account_non_expired, credentials_non_expired, account_non_locked) VALUES ('1', 'admin','$2y$10$61RAGjMPhbyLyzgrcYK7UeSL/r.3cE7H8CKIPNYkE2KE4gGBfnMs6', 'admin@akfa.uz', '1', '1', '1', '1');
+insert into  "users" (id, username,password, email, enabled, account_non_expired, credentials_non_expired, account_non_locked) VALUES ('2', 'user', '$2y$10$w2VXQJy.moFhqSiBhV1QXOGWhJThdgov4gLgQVn9IZs4DHoOVDVXy','user@akfa.uz', '1', '1', '1', '1');
+
+INSERT INTO ROLE_USER (ROLE_ID, USER_ID)
+    VALUES
+    (1, 1) /* admin-admin */,
+    (2, 2) /* user-user */ ;
